@@ -52,7 +52,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.95"
-        app:srcCompat="@drawable/we" />
+        app:srcCompat="@drawable/WE" />
 
     <EditText
         android:id="@+id/editTextTextPassword"
