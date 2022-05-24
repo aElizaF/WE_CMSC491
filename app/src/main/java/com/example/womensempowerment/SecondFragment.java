@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+import com.example.womensempowerment.databinding.FragmentSecondBinding;
 
 public class SecondFragment extends Fragment {
     private FragmentSecondBinding binding;
@@ -29,6 +29,8 @@ public class SecondFragment extends Fragment {
         binding.buttonSecond.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // NavHostFragment is showing up red/suggesting I add dependency on
+                // androidx.navigation:navigation-fragment and import. not sure if I should -olivia
                 NavHostFragment.findNavController(SecondFragment.this)
                         .navigate(R.id.action_SecondFragment_to_FirstFragment);
             }
