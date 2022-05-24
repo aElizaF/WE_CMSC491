@@ -20,23 +20,21 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.SignUpHan
 import com.amazonaws.regions.Regions;
 
 public class Cognito {
-    private String poolID = "";
-    // TODO Add this later
-    private String clientID = "";
-    // TODO Add this later
-    private String clientSecret = "";
-    // TODO Add this later
+    //AWS Cogntio Information User Pool
+    private String poolID = "us-east-1_YA9Juv3Qg";
+    private String clientID = "3tfs2ho7rojblv0os4lc8q6hdt";
+    private String clientSecret = "fg1cbfnrfnmivg2ab8c08dgn1dcl2spaioaskjcq1ae02ksjsjf";
     private Regions awsRegion = Regions.US_EAST_1;
+    // USer Attributes
     private CognitoUserPool userPool;
     private CognitoUserAttributes userAttributes;
+    private Context appContext;
     private String username = "";
     private String password = "";
     private String mFACode = "";
-    private Context myContext;
-
 
     public Cognito(Context myContext) {
-        this.myContext = myContext;
+        this.appContext = myContext;
         userPool = new CognitoUserPool(myContext, this.poolID, this.clientID, this.clientSecret, this.awsRegion);
         userAttributes = new CognitoUserAttributes();
     }
@@ -82,18 +80,17 @@ public class Cognito {
     };
     public void confirmUser(String id, String code) {
         CognitoUser user = userPool.getUser(id);
-        //again, always use the in background
-        user.confirmSignUpInBackground(code, false, confirmationcallback); // this is a generic call back
+        user.confirmSignUpInBackground(code, false, confirmationcallback);
     }
     GenericHandler confirmationcallback = new GenericHandler() {
         @Override
         public void onSuccess() {
-            Toast.makeText(myContext, "Confirmation passed", Toast.LENGTH_LONG).show();
+            Toast.makeText(appContext, "Confirmation passed", Toast.LENGTH_LONG).show();
         }
 
         @Override
         public void onFailure(Exception exception) {
-            Toast.makeText(myContext, "Confirmation Failed", Toast.LENGTH_LONG).show();
+            Toast.makeText(appContext, "Confirmation Failed", Toast.LENGTH_LONG).show();
 
         }
     };
@@ -109,10 +106,10 @@ public class Cognito {
         @Override
         public void onSuccess(CognitoUser user, boolean signUpConfirmationState, CognitoUserCodeDeliveryDetails cognitoUserCodeDeliveryDetails) {
             if (!signUpConfirmationState){
-                Toast.makeText(myContext, "Confirmation code not provided", Toast.LENGTH_LONG).show();
+                Toast.makeText(appContext, "Confirmation code not provided", Toast.LENGTH_LONG).show();
             }
             else {
-                Toast.makeText(myContext, "Confirmation is complete", Toast.LENGTH_LONG).show();
+                Toast.makeText(appContext, "Confirmation is complete", Toast.LENGTH_LONG).show();
             }
 
         }
