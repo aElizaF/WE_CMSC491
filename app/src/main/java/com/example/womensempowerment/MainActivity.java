@@ -47,13 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.buttonGetHelpNow:
-                startActivity(new Intent(MainActivity.this, Search.class));
-                // TODO Add code to take the user to the Search
-
+                Intent intent = new Intent(this, Search.class);
+                startActivity(intent);
                 break;
             case R.id.txtNotAccount:
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
-                // TODO add code to go to RegisterActivity
+                Intent intent2 = new Intent(this, RegisterActivity.class);
+                startActivity(intent2);
                 break;
             case R.id.btnLogin:
                 Cognito authentication = new Cognito(getApplicationContext());

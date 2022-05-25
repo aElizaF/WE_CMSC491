@@ -48,7 +48,6 @@ public class Search extends FragmentActivity implements OnMapReadyCallback {
     // Map Elements
     private GoogleMap mMap;
 
-
     // Sensor Elements
     private SensorManager mSensorManager;
     private SensorEventListener sensorEventListener;
