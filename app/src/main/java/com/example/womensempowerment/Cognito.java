@@ -1,8 +1,12 @@
 package com.example.womensempowerment;
 
 import android.content.Context;
+import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoDevice;
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.CognitoUser;
@@ -19,7 +23,7 @@ import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.GenericHa
 import com.amazonaws.mobileconnectors.cognitoidentityprovider.handlers.SignUpHandler;
 import com.amazonaws.regions.Regions;
 
-public class Cognito {
+public class Cognito extends AppCompatActivity {
     //AWS Cogntio Information User Pool
     private String poolID = "us-east-1_YA9Juv3Qg";
     private String clientID = "3tfs2ho7rojblv0os4lc8q6hdt";
@@ -32,6 +36,11 @@ public class Cognito {
     private String username = "";
     private String password = "";
     private String mFACode = "";
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     public Cognito(Context myContext) {
         this.appContext = myContext;
